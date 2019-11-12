@@ -1,0 +1,63 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Round {{ subsession.round_number }}, Stage 1 &ndash; Your Vote
+{% endblock %}
+
+{% block content %}
+    <p> You are <font color= "{{ player.color }}" ><b> {{ player.color }}</b></font>.</p>
+
+    <p>The proposer in this stage was <font color= "{{ group.color_prop }}" ><b> {{ group.color_prop }}</b></font>.</p>
+
+    <p>This is the allocation proposed by the proposer:</p>
+    <table cellpadding="12" cellspacing="12">
+        <tr>
+            <td align="center"valign="center"> Member </td>
+            <td align="center"valign="center">  <font color= "{{ group.color1 }}"> {{ group.color1 }} </td>
+            <td align="center"valign="center">  <font color= "{{ group.color2 }}"> {{ group.color2 }} </td>
+            <td align="center"valign="center">  <font color= "{{ group.color3 }}"> {{ group.color3 }} </td>
+        </tr>
+        <tr>
+            <td align="center"valign="center"> Allocation </td>
+            <td>{{ group.chosen_offer_to_1 }}</td>
+            <td>{{ group.chosen_offer_to_2 }}</td>
+            <td>{{ group.chosen_offer_to_3 }}</td>
+        </tr>
+        <tr>
+            <td align="center"valign="center"> Proposal probability in stage 1 </td>
+            <td align="center"valign="center"> {{ Constants.rec_perc_1 }} %  </td>
+            <td align="center"valign="center"> {{ Constants.rec_perc_2 }} % </td>
+            <td align="center"valign="center"> {{ Constants.rec_perc_3 }} % </td>
+        </tr>
+         <tr>
+            <td align="center"valign="center"> Proposal probability in stage 2 </td>
+            <td align="center"valign="center"> {{ Constants.rec_perc_1_2nd }} %  </td>
+            <td align="center"valign="center"> {{ Constants.rec_perc_2_2nd }} %  </td>
+            <td align="center"valign="center"> {{ Constants.rec_perc_3_2nd }} %  </td>
+        </tr>
+    </table>
+    <br>
+
+    {% formfields %}
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block styles %}
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 400px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+</style>
+{% endblock %}

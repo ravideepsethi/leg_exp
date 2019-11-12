@@ -1,0 +1,51 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Final Payment
+{% endblock %}
+
+{% block content %}
+<table class="table">
+    <tr>
+        <th>Round</th>
+        <th>Payoff</th>
+    </tr>
+     {% for p in player_in_all_rounds %}
+        <tr>
+            <td>{{ p.round_number }}</td>
+            <td>{{ p.payoff }}</td>
+        </tr>
+    {% endfor %}
+
+</table>
+
+<p>You get a show-up fee and a minimum payment of {{ participation_fee }}. </p>
+<p>In addition, you get paid for round {{ paying_round }}. </p>
+<p>Your total payoff is therefore {{ total_payoff }}.</p>
+
+
+    {% next_button %}
+{% endblock %}
+
+
+{% block styles %}
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 400px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 3px;
+}
+
+
+.otree-timer {
+    display: none;
+}
+</style>
+{% endblock %}

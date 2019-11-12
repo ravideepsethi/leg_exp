@@ -1,0 +1,58 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Round {{ subsession.round_number }} - Role Assignment Result
+{% endblock %}
+
+{% block content %}
+    {% if player.selected == 1 %}
+    <p> You have been selected to pay for the role you chose.</p>
+    {% else %}
+    <p> You have NOT been selected to pay for the role you chose.</p>
+    {% endif %}
+    <p> Your role is <font color= "{{ player.color }}" ><b> {{ player.color }}</b></font>.</p>
+
+    <br>
+    <p>These will be the proposal probabilities for each member in this round:</p>
+    <table>
+        <tr>
+            <td align="center"valign="center"> Member </td>
+            <td align="center"valign="center">  <font color= "{{ group.color1 }}"> {{ group.color1 }} </td>
+            <td align="center"valign="center">  <font color= "{{ group.color2 }}"> {{ group.color2 }} </td>
+            <td align="center"valign="center">  <font color= "{{ group.color3 }}"> {{ group.color3 }} </td>
+        </tr>
+        <tr>
+            <td align="center"valign="center"> Proposal probability in stage 1 </td>
+            <td align="center"valign="center"> {{ Constants.rec_perc_1 }} %  </td>
+            <td align="center"valign="center"> {{ Constants.rec_perc_2 }} % </td>
+            <td align="center"valign="center"> {{ Constants.rec_perc_3 }} % </td>
+        </tr>
+        <tr>
+            <td align="center"valign="center"> Proposal probability in stage 2 </td>
+            <td align="center"valign="center"> {{ Constants.rec_perc_1_2nd }} %  </td>
+            <td align="center"valign="center"> {{ Constants.rec_perc_2_2nd }} %  </td>
+            <td align="center"valign="center"> {{ Constants.rec_perc_3_2nd }} %  </td>
+        </tr>
+    </table>
+
+    <br>
+    {% next_button %}
+
+{% endblock %}
+
+{% block styles %}
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 400px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+</style>
+{% endblock %}

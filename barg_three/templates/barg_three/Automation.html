@@ -1,0 +1,72 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Round {{ subsession.round_number }}, Stage 2 - Results
+{% endblock %}
+
+{% block content %}
+    <p>You are <font color= "{{ player.color }}" ><b> {{ player.color }}</b></font>.</p>
+    <p>The proposer in this stage <font color= "{{ group.color_prop_2 }}" ><b> {{ group.color_prop_2 }}</b></font>.</p>
+
+    <br>
+    <p>This is the outcome in this round:</p>
+     <table>
+        <tr>
+            <td align="center"valign="center"> Member </td>
+            <td align="center"valign="center">  <font color= "{{ group.color1 }}"> {{ group.color1 }} </td>
+            <td align="center"valign="center">  <font color= "{{ group.color2 }}"> {{ group.color2 }} </td>
+            <td align="center"valign="center">  <font color= "{{ group.color3 }}"> {{ group.color3 }} </td>
+        </tr>
+          <tr>
+            <td align="center"valign="center"> Allocation </td>
+            <td align="center"valign="center">{{ group.allocation_to_1_2 }}</td>
+            <td align="center"valign="center">{{ group.allocation_to_2_2 }}</td>
+            <td align="center"valign="center">{{ group.allocation_to_3_2 }}</td>
+        </tr>
+         {% if group.auc_round == 1 %}
+             <tr>
+                <td align="center"valign="center"> Endowment </td>
+                <td align="center"valign="center">{{ group.auc_endowment }}</td>
+                <td align="center"valign="center">{{ group.auc_endowment }}</td>
+                <td align="center"valign="center">{{ group.auc_endowment }}</td>
+            </tr>
+             <tr>
+                <td align="center"valign="center"> Paid Bid </td>
+                <td align="center"valign="center">{{ group.bid_paid_1 }}</td>
+                <td align="center"valign="center">{{ group.bid_paid_2 }}</td>
+                <td align="center"valign="center">{{ group.bid_paid_3 }}</td>
+            </tr>
+            <tr>
+                <td align="center"valign="center"> Remaining Endowment </td>
+                <td align="center"valign="center">{{ group.surplus_1 }}</td>
+                <td align="center"valign="center">{{ group.surplus_2 }}</td>
+                <td align="center"valign="center">{{ group.surplus_3 }}</td>
+            </tr>
+         {% endif %}
+    </table>
+    <br>
+
+    {% next_button %}
+{% endblock %}
+
+{% block styles %}
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 400px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+
+.otree-timer {
+    display: none;
+}
+</style>
+{% endblock %}
